@@ -133,8 +133,10 @@ Instead of drawing boxes from scratch, my pipeline:
    ```
    Edit OUTPUT_LABELS_FOLDER,MODEL_PATH,IMAGES_BASE_FOLDER in the script
    This will save train.txt files for CVAT support 
+   
 5. Make the zip file that containes data.yaml,labels,train.txt
 <img width="964" height="528" alt="image" src="https://github.com/user-attachments/assets/25ea2472-0879-40fa-898f-7f3c894ce89b" />
+
 6. Import into CVAT → Correct → Export final dataset 🎉
 
 ---
