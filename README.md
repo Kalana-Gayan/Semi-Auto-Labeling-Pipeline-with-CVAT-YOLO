@@ -102,8 +102,8 @@ Instead of drawing boxes from scratch, my pipeline:
 
 ```
 ├── raw_images/          # Sample unlabeled images  
-├── predictions/         # Model predictions (YOLO format)  
-├── annotations/         # Converted annotations (COCO/YOLO JSON)  
+├── predictions/         # Model predictions (YOLO)  
+├── annotations/         # Converted annotations (YOLO)  
 ├── ModelTo_YOLO.py      # Script to convert YOLO → CVAT format  
 └── README.md            # This file  
 ```
@@ -138,10 +138,8 @@ Instead of drawing boxes from scratch, my pipeline:
 
 6. Import into CVAT → Correct → Export final dataset 🎉
 
----
+
 
 🔥 That’s it.
 
----
 
-👉 Want me to also write you a **short dummy `convert_to_cvat.py` script** so you can drop it into the repo right away (so it looks “production-ready”)?
