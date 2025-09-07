@@ -123,7 +123,7 @@ Instead of drawing boxes from scratch, my pipeline:
    ```bash
    pip install ultralytics opencv-python
    ```
-3.   ```bash
+3. ```bash
    yolo detect predict model=best.pt source=raw_images/ save_txt=True
    ```
 4. Run conversion script
