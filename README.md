@@ -55,12 +55,12 @@ Instead of drawing boxes from scratch, my pipeline:
 
 3. **Convert predictions → CVAT import format**
 
-   * Example: YOLO TXT → CVAT COCO JSON
-   * Python script included in `convert_to_cvat.py`
+   * Example: YOLO TXT → CVAT support YOLO format
+   * Python script included in `ModelTo_YOLO.py`
 
 4. **Upload into CVAT**
 
-   * Import annotations in **COCO/YOLO format**.
+   * Import annotations in **YOLO format**.
    * See pre-labeled bounding boxes in the interface.
 
 5. **Correct mistakes**
@@ -73,10 +73,10 @@ Instead of drawing boxes from scratch, my pipeline:
 
 | Method           | Time per image | Notes                |
 | ---------------- | -------------- | -------------------- |
-| Manual labeling  | \~3 mins       | Draw every box       |
-| Semi-auto (this) | \~30 secs      | Just tweak + relabel |
+| Manual labeling  | \~1.30 mins       | Draw every box       |
+| Semi-auto (this) | \~10 secs      | Just tweak + relabel |
 
-➡️ **5–6x faster** dataset creation 🚀
+➡️ **10–20x faster** dataset creation 🚀
 
 ---
 
@@ -104,7 +104,7 @@ Instead of drawing boxes from scratch, my pipeline:
 ├── raw_images/          # Sample unlabeled images  
 ├── predictions/         # Model predictions (YOLO format)  
 ├── annotations/         # Converted annotations (COCO/YOLO JSON)  
-├── convert_to_cvat.py   # Script to convert YOLO → CVAT format  
+├── ModelTo_YOLO.py      # Script to convert YOLO → CVAT format  
 └── README.md            # This file  
 ```
 
@@ -115,7 +115,7 @@ Instead of drawing boxes from scratch, my pipeline:
 1. Clone repo
 
    ```bash
-   git clone https://github.com/yourusername/semi-auto-labeling-pipeline.git
+   git clone https://github.com/Kalana-Gayan/semi-auto-labeling-pipeline.git
    cd semi-auto-labeling-pipeline
    ```
 2. Install dependencies
@@ -123,12 +123,19 @@ Instead of drawing boxes from scratch, my pipeline:
    ```bash
    pip install ultralytics opencv-python
    ```
-3. Run conversion script
+3.   ```bash
+   yolo detect predict model=best.pt source=raw_images/ save_txt=True
+   ```
+4. Run conversion script
 
    ```bash
-   python convert_to_cvat.py --input predictions/ --output annotations/
+   python ModelTo_YOLO.py
    ```
-4. Import into CVAT → Correct → Export final dataset 🎉
+   Edit OUTPUT_LABELS_FOLDER,MODEL_PATH,IMAGES_BASE_FOLDER in the script
+   This will save train.txt files for CVAT support 
+5. Make the zip file that containes data.yaml,labels,train.txt
+<img width="964" height="528" alt="image" src="https://github.com/user-attachments/assets/25ea2472-0879-40fa-898f-7f3c894ce89b" />
+6. Import into CVAT → Correct → Export final dataset 🎉
 
 ---
 
